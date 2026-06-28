@@ -15,5 +15,9 @@ const homeRouter = express.Router()
 
 homeRouter.get('/',validateRequestBody(homeSchema),homeController)
 
+// homeRouter.get("/",(req:Request,res:Response)=>{
+//     res.send("Response from v1 Router")
+// })
+
 export default homeRouter
 

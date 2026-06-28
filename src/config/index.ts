@@ -4,12 +4,7 @@ type Serverconfig= {
     PORT : Number
 }
 
-function loadenv(){
-    dotenv.config()
-
-}
-
-loadenv();
+dotenv.config()
 
 
 
