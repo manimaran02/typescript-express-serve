@@ -1,28 +1,31 @@
 import { NextFunction, Request, Response } from "express"
-import fs from "fs/promises"
-import { NotFoundError } from "../utils/errors/apperror"
+import { InternalServer,NotImplemented } from "../utils/errors/apperror"
+import logger from "../config/logger.config"
 
 
 
 
-export const homeController =  async(req : Request,res : Response,next : NextFunction)=>{
+
+export const homeController =  (req : Request,res : Response,next : NextFunction)=>{
     
     // In version < 5
 
     try{
-        await fs.readFile("sample")
+        logger.info("Request recieved successfully for v1")
         res.status(200).json({
             success: true,
-            message : "file read completed"
+            message : "request recieved successfully"
         })
     }
     catch(error){
-        throw new NotFoundError("File is not found")
+        logger.error("Request recieved successfully for v1")
+        throw new NotImplemented("Internal Server problem")
+        
     }
 
     // In version >= 5
 
-
+    // Not neccessary to throw error // Instead next(error) itt automatically call default error handler in express
     // await fs.readFile("sample")
     // res.status(200).json({
     //     success : true,
